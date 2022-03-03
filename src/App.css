@@ -33,6 +33,7 @@
     background-color: rgba(255, 255, 255, 0.8);
     font-size: 1.15rem;
     padding-right: 10px;
+    margin-left: 20px;
 }
 
 .name-heading, .phone-heading {
@@ -41,3 +42,7 @@
     color: #808080;
     text-transform: uppercase;
 }
+.delete-btn {
+    background: #fa9c9c;
+    color: #000;
+} 
