@@ -2,10 +2,15 @@
 import React,{Component} from 'react';
 import './App.css';
 import Header from './Header';
+// import Password from './Password';
+// import ProgressBar from './ProgressBar';
+// import StrengthCriteria from './StrengthCriteria';
 
 class App extends Component{
   
-  render(){  
+  render() { 
+
+  
     let subscribers=[
       { id:1,
         name:'Sravya',
@@ -35,12 +40,12 @@ class App extends Component{
     ]  
     return (
       <div>
-        <Header/>
+        <Header heading="Phone Directory" />
         <div className='component-body-container'>
       <button className='custom-btn add-btn'>Add</button>
       <div className="grid-container heading-container">
-            <span className="grid-item name-heading">Name</span>
-            <span className="grid-item phone-heading">Phone</span>
+         <span className="grid-item name-heading">Name</span>
+         <span className="grid-item phone-heading">Phone</span>
           </div>
     </div>
     {
@@ -52,10 +57,12 @@ class App extends Component{
           </div>
       })
     }
-           </div> 
-            );
-      }
- 
+       </div> 
+   );
+
+    
 }
+}
+
 
 export default App;
