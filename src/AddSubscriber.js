@@ -1,12 +1,12 @@
 import React,{Component} from 'react';
-import './AddSubscriber.css';
+import'./AddSubscriber.css';
 import Header from './Header';
 
-class AddSubscriber extends Component {
+class AddSubscriber extends Component{
     render(){
         return(
             <div>
-                <Header heading="Add Subscriber"/>
+                <Header  heading="Add Subscriber"/>
                 <div className='component-body-container'>
                     <button className='custom-btn'>Back</button>
                     </div>
@@ -21,10 +21,10 @@ class AddSubscriber extends Component {
                             <span className='subscriber-info'>Phone: </span>
                         </div>
                         <button className='custom-btn add-btn'>Add</button>
-                    </form>
+                   </form>
+
             </div>
         )
     }
 }
-
 export default AddSubscriber;
