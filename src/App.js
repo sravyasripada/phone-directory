@@ -7,37 +7,44 @@ import Header from './Header';
 // import StrengthCriteria from './StrengthCriteria';
 
 class App extends Component{
-  
+  constructor()
+{
+  super();
+  this.state={
+    subscriberListToShow:[]
+
+  }
+}  
   render() { 
 
   
-    let subscribers=[
-      { id:1,
-        name:'Sravya',
-        phone:'9845672398'      
+    // let subscribers=[
+    //   { id:1,
+    //     name:'Sravya',
+    //     phone:'9845672398'      
 
-      },
-      { id:2,
-        name:'Bhanu',
-        phone:'9874521365'      
+    //   },
+    //   { id:2,
+    //     name:'Bhanu',
+    //     phone:'9874521365'      
 
-      },
-      { id:3,
-        name:'Lucky',
-        phone:'9854624125'      
+    //   },
+    //   { id:3,
+    //     name:'Lucky',
+    //     phone:'9854624125'      
 
-      },
-      { id:4,
-        name:'Krish',
-        phone:'9856324718'      
+    //   },
+    //   { id:4,
+    //     name:'Krish',
+    //     phone:'9856324718'      
 
-      },
-      { id:5,
-        name:'Ram',
-        phone:'9758324962'      
+    //   },
+    //   { id:5,
+    //     name:'Ram',
+    //     phone:'9758324962'      
 
-      },
-    ]  
+    //   },
+    // ]  
     return (
       <div>
         <Header heading="Phone Directory" />
@@ -49,7 +56,7 @@ class App extends Component{
           </div>
     </div>
     {
-      subscribers.map(sub =>{
+      this.state.subscriberListToShow.map(sub =>{
         return <div key={sub.id} className="grid-container">
           <span className='grid-item'>{sub.name}</span>
           <span className='grid-item'>{sub.phone}</span>
