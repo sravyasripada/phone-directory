@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import'./AddSubscriber.css';
 import Header from './Header';
+import {Link} from 'react-router-dom';
 
 class AddSubscriber extends Component{
 
@@ -20,14 +21,21 @@ class AddSubscriber extends Component{
         this.setState(state);
         console.log(this.state);
     }
+
+  onFormSubmitted =(e) =>{
+        e.preventDefault();
+        this.props.addSubscriberHandler(this.state);
+        this.setState({ id:0, name:'',phone:''})
+    }
     render(){
         return(
             <div>
                 <Header  heading="Add Subscriber"/>
                 <div className='component-body-container'>
-                    <button className='custom-btn'>Back</button>
-                    </div>
-                    <form className="subscriber-form">
+                     
+                     <Link to="/"><button className='custom-btn'>Back</button></Link>
+                    </div>                   
+                    <form className="subscriber-form"  onSubmit={this.onFormSubmitted.bind(this)}>
                     <label htmlFor="name" className='label-control'>Name : </label><br/>
                         <input id="name" type="text" className='input-control' name="name" onChange={this.inputChangeHandler}></input><br/><br/>
                         <label htmlFor="phone" className='label-control'>Phone : </label><br/>
@@ -37,8 +45,10 @@ class AddSubscriber extends Component{
                             <span className='subscriber-info'>Name:{this.state.name} </span><br/>
                             <span className='subscriber-info'>Phone:{this.state.phone} </span>
                         </div>
-                        <button className='custom-btn add-btn'>Add</button>
+                       
+                        <button type="Submit" className='custom-btn add-btn'>Add</button>
                    </form>
+                   
 
             </div>
         )
