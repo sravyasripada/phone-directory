@@ -5,49 +5,35 @@ import './ShowSubscriber.css';
 import Header from './Header';
 import { Link }  from 'react-router-dom';
 
-class App extends Component {
-  constructor(){
-    super();
-    this.state={
-      subscribersListToShow:[]
-    }
-    console.log("Constructor called")
-  }
-  componentDidMount(){
-    console.log("Component Did Mount called")
-  }
-}
-
 class ShowSubscriber extends Component {
-  render(){
-    console.log("render called")
+  onDeletedClick = (subscriberId) => {
+    this.props.deleteSubscriberHandler(subscriberId);
+    }
     
+  render(){
     return (
       <div>
-        <Header heading="Phone Directory"/>
+        <Header heading="Phone Directory" />
         <div className='component-body-container'>
-      
       <Link to="/add"><button className='custom-btn add-btn'>Add</button></Link>
       <div className="grid-container heading-container">
             <span className="grid-item name-heading">Name</span>
             <span className="grid-item phone-heading">Phone</span>
           </div>
     </div>
-   
-    {   
+    {
     this.props.subscriberList.map(sub =>{
         return <div key={sub.id} className="grid-container">
           <span className='grid-item'>{sub.name}</span>
           <span className='grid-item'>{sub.phone}</span>
-          <span className='grid-item'><button className='custom-btn delete-btn'>Delete</button></span>
+          <span className='grid-item'><button className='custom-btn delete-btn' onClick={this.onDeletedClick.bind(this,(sub.id))}>Delete</button></span>
           </div>
       })
-    }       
-    
-  
-  </div>
+    }
+        
+      </div>
     );
+  }
+  
 }
-}
-
 export default ShowSubscriber;

@@ -3,26 +3,42 @@ import AddSubscriber from './AddSubscriber';
 import ShowSubscriber from './ShowSubscriber';
 import {BrowserRouter , Routes, Route} from 'react-router-dom';
 
-class PhoneDirectory extends Component{
+class PhoneDirectory extends Component {
     constructor(){
         super();
         this.state={
             subscriberList:[
-               {
-                id:1,
-                name:'Sravya',
-                phone:'9854745694'
-            },
-            {
-                id:2,
-                name:'Abhi',
-                phone:'9856321574'
-            }
+                {
+                    id:1,
+                    name:'Sravya',
+                    phone:'9988776655'
+                },
+                {
+                    id:2,
+                    name:'Lucky',
+                    phone:'9977668822'
+                }
+            ]
+        }
+    }
 
-         ]
-     }
- }
-      addSubscriberHandler =(newSubscriber) =>{
+    deleteSubscriberHandler =(subscriberId) =>{
+        let subscriberList=this.state.subscriberList;
+        let subscriberIndex=0;
+        subscriberList.forEach(function(subscriber,index){
+            if(subscriber.id === subscriberId){
+                subscriberIndex=index;
+            }
+        },this)
+        let newSubscribers=subscriberList;
+        subscriberList.splice(subscriberIndex,1);
+        this.setState({
+            subscribers:newSubscribers
+        });
+
+    }
+
+    addSubscriberHandler =(newSubscriber) =>{
         let subscriberList=this.state.subscriberList;
         console.log(this.state.subscriberList)
         if(subscriberList.length>0){
@@ -33,17 +49,16 @@ class PhoneDirectory extends Component{
         subscriberList.push(newSubscriber);
         this.setState({subscriberList:subscriberList});
         console.log(this.state.subscriberList);
-     }
+    }
     render(){
         return(
-            //<AddSubscriber addSubscriberHandler={this.addSubscriberHandler}/>
-            //<ShowSubscriber subscriberList={this.state.subscriberList}/>
+            // <AddSubscriber addSubscriberHandler={this.addSubscriberHandler}/>
+            // <ShowSubscriber subscriberList={this.state.subscriberList} />
             <BrowserRouter>
-             <Routes>
-                 <Route exact path="/" element={<ShowSubscriber subscriberList={this.state.subscriberList}/>}/>
-                 <Route exact path="/add" element={<AddSubscriber addSubscriberHandler={this.addSubscriberHandler}/>}/>
-                     
-             </Routes>
+            <Routes>
+                <Route exact path="/" element={<ShowSubscriber subscriberList={this.state.subscriberList} deleteSubscriberHandler={this.deleteSubscriberHandler} />}/>
+                <Route exact path="/add" element={<AddSubscriber addSubscriberHandler={this.addSubscriberHandler}/>}/>
+            </Routes>
             </BrowserRouter>
         )
     }
